@@ -9,7 +9,7 @@
 #include <queue>
 #include "filesystem.h"
 #include "format.h"
-#include <unistd.h>
+//#include <unistd.h>
 #include "run.h"
 //#include <curses.h>
 using namespace std;

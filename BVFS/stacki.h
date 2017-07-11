@@ -52,7 +52,7 @@ int PushST(StackType *s,i_node data)
 {
 	if((s->top)+1>MAXLEN)
 	{
-		cout<<"栈溢出"<<endl;
+        cout<<"栈溢出 "<<endl;
 		return 0;
 	}
 	s->data[++s->top]=data;					//将元素压入栈
@@ -73,7 +73,7 @@ i_node *PeekST(StackType *s)
 {
 	if(s->top==0)
 	{
-		cout<<"栈已空"<<endl;
+        cout<<"栈已空 "<<endl;
 		exit(0);
 	}
 	return &(s->data[s->top]);
