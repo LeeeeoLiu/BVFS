@@ -112,7 +112,8 @@ void MainWindow::receiveSetInodeInfo(bool flag)
 
        emit sendInodeToIni(inodePoint,mfdPoint,sfdPoint);
     }
-
+//    emit sendRefreshAction();
+}
 void MainWindow::receiveOrder(QString o)
 {
     string order;
@@ -306,6 +307,7 @@ void MainWindow::receiveOrder(QString o)
     }
 //    cout<<"$ ";
     emit sendRoute(QString::fromStdString(pwd));
+    emit sendRefreshAction();
 }
 
 void MainWindow::receiveVimContent(QString file,QString content)
@@ -313,4 +315,5 @@ void MainWindow::receiveVimContent(QString file,QString content)
     string f=file.toStdString();
     string c=content.toStdString();
     vim(f,c);
+    emit sendRefreshAction();
 }

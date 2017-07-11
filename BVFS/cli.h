@@ -30,6 +30,7 @@ signals:
     void sendLoginInfo(QString,QString);
     void sendOrder(QString);
     void sendVimContent(QString,QString);
+    void sendRefreshAction();
 private:
     Ui::CLI *ui;
 };

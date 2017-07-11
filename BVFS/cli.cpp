@@ -30,6 +30,7 @@ CLI::CLI(QWidget *parent) :
 //    ui->plainTextEdit->appendHtml(cliHistory+"");
     ui->textEdit->moveCursor(QTextCursor::End);
     ui->textEdit->append("Welcome to BVFS comand line interface!\n(C) Copyrights by BV533 2017.\nlogin:");
+    emit sendRefreshAction();
 }
 
 CLI::~CLI()
@@ -84,6 +85,7 @@ void CLI::on_lineEdit_returnPressed()
         ui->lineEdit->setText(front);
         cout<<"enter pressed"<<endl;
     }
+    emit sendRefreshAction();
 }
 
 void CLI::keyPressEvent(QKeyEvent  *event)
@@ -158,6 +160,7 @@ void CLI::receiveLoginStatus(bool status)
         ui->textEdit->append("login:");
         ui->lineEdit->clear();
     }
+//    emit sendRefreshAction();
 }
 
 void CLI::receiveRoute(QString r)
@@ -168,26 +171,31 @@ void CLI::receiveRoute(QString r)
     this->setWindowTitle(userCurrent+"@LeeeeoLius-MacBook-Pro:"+route);
     front="# "+userCurrent+"@ LeeeeoLius-MacBook-Pro in "+route+" ["+cmdTime+"]$";
     ui->lineEdit->setText(front);
+    emit sendRefreshAction();
 }
 
 void CLI::receiveCatReturn(QString r)
 {
     ui->textEdit->append(r);
+    emit sendRefreshAction();
 }
 
 void CLI::receiveLsReturn(QString r)
 {
     ui->textEdit->append(r);
+    emit sendRefreshAction();
 }
 
 void CLI::receiveLlReturn(QString r)
 {
     ui->textEdit->append(r);
+    emit sendRefreshAction();
 }
 
 void CLI::receivePwdReturn(QString r)
 {
     ui->textEdit->append(r);
+    emit sendRefreshAction();
 }
 
 void CLI::receiveVimAction(QString f)
@@ -197,5 +205,6 @@ void CLI::receiveVimAction(QString f)
     ui->textEdit->clear();
 //    ui->lineEdit->clear();
     ui->textEdit->setReadOnly(false);
+    emit sendRefreshAction();
 //    ui->lineEdit->clear();
 }

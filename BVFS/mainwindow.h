@@ -101,6 +101,7 @@ signals:
     void sendLlReturn(QString);
     void sendPwdReturn(QString);
     void sendVimAction(QString);
+    void sendRefreshAction();
 private:
     Ui::MainWindow *ui;
 

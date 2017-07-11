@@ -15,11 +15,73 @@
   </property>
   <widget class="QWidget" name="centralwidget">
    <layout class="QGridLayout" name="gridLayout">
-    <item row="8" column="1">
-     <widget class="QPushButton" name="refresh">
-      <property name="text">
-       <string>刷新</string>
+    <item row="4" column="0">
+     <widget class="QTableWidget" name="tableWidget_2">
+      <property name="rowCount">
+       <number>1</number>
       </property>
+      <attribute name="horizontalHeaderCascadingSectionResizes">
+       <bool>false</bool>
+      </attribute>
+      <attribute name="horizontalHeaderShowSortIndicator" stdset="0">
+       <bool>false</bool>
+      </attribute>
+      <attribute name="horizontalHeaderStretchLastSection">
+       <bool>true</bool>
+      </attribute>
+      <attribute name="verticalHeaderVisible">
+       <bool>false</bool>
+      </attribute>
+      <attribute name="verticalHeaderHighlightSections">
+       <bool>true</bool>
+      </attribute>
+      <row/>
+      <column>
+       <property name="text">
+        <string>用户名</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>密码</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>iNode</string>
+       </property>
+      </column>
+     </widget>
+    </item>
+    <item row="4" column="1">
+     <widget class="QTableWidget" name="tableWidget_3">
+      <attribute name="horizontalHeaderCascadingSectionResizes">
+       <bool>false</bool>
+      </attribute>
+      <attribute name="horizontalHeaderMinimumSectionSize">
+       <number>19</number>
+      </attribute>
+      <attribute name="horizontalHeaderStretchLastSection">
+       <bool>true</bool>
+      </attribute>
+      <attribute name="verticalHeaderVisible">
+       <bool>false</bool>
+      </attribute>
+      <column>
+       <property name="text">
+        <string>SFDInode</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>文件（目录）</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>iNode</string>
+       </property>
+      </column>
      </widget>
     </item>
     <item row="0" column="0" colspan="2">
@@ -76,75 +138,6 @@
       </column>
      </widget>
     </item>
-    <item row="4" column="1">
-     <widget class="QTableWidget" name="tableWidget_3">
-      <attribute name="horizontalHeaderCascadingSectionResizes">
-       <bool>false</bool>
-      </attribute>
-      <attribute name="horizontalHeaderMinimumSectionSize">
-       <number>19</number>
-      </attribute>
-      <attribute name="horizontalHeaderStretchLastSection">
-       <bool>true</bool>
-      </attribute>
-      <attribute name="verticalHeaderVisible">
-       <bool>false</bool>
-      </attribute>
-      <column>
-       <property name="text">
-        <string>SFDInode</string>
-       </property>
-      </column>
-      <column>
-       <property name="text">
-        <string>文件（目录）</string>
-       </property>
-      </column>
-      <column>
-       <property name="text">
-        <string>iNode</string>
-       </property>
-      </column>
-     </widget>
-    </item>
-    <item row="4" column="0">
-     <widget class="QTableWidget" name="tableWidget_2">
-      <property name="rowCount">
-       <number>1</number>
-      </property>
-      <attribute name="horizontalHeaderCascadingSectionResizes">
-       <bool>false</bool>
-      </attribute>
-      <attribute name="horizontalHeaderShowSortIndicator" stdset="0">
-       <bool>false</bool>
-      </attribute>
-      <attribute name="horizontalHeaderStretchLastSection">
-       <bool>true</bool>
-      </attribute>
-      <attribute name="verticalHeaderVisible">
-       <bool>false</bool>
-      </attribute>
-      <attribute name="verticalHeaderHighlightSections">
-       <bool>true</bool>
-      </attribute>
-      <row/>
-      <column>
-       <property name="text">
-        <string>用户名</string>
-       </property>
-      </column>
-      <column>
-       <property name="text">
-        <string>密码</string>
-       </property>
-      </column>
-      <column>
-       <property name="text">
-        <string>iNode</string>
-       </property>
-      </column>
-     </widget>
-    </item>
     <item row="5" column="0" colspan="2">
      <widget class="QTableWidget" name="tableWidget_4"/>
     </item>
@@ -156,7 +149,7 @@
      <x>0</x>
      <y>0</y>
      <width>774</width>
-     <height>23</height>
+     <height>22</height>
     </rect>
    </property>
   </widget>

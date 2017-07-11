@@ -19,8 +19,8 @@
 
 QT_BEGIN_MOC_NAMESPACE
 struct qt_meta_stringdata_CLI_t {
-    QByteArrayData data[14];
-    char stringdata0[197];
+    QByteArrayData data[15];
+    char stringdata0[215];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -34,23 +34,25 @@ QT_MOC_LITERAL(1, 4, 13), // "sendLoginInfo"
 QT_MOC_LITERAL(2, 18, 0), // ""
 QT_MOC_LITERAL(3, 19, 9), // "sendOrder"
 QT_MOC_LITERAL(4, 29, 14), // "sendVimContent"
-QT_MOC_LITERAL(5, 44, 11), // "receiveShow"
-QT_MOC_LITERAL(6, 56, 25), // "on_lineEdit_returnPressed"
-QT_MOC_LITERAL(7, 82, 18), // "receiveLoginStatus"
-QT_MOC_LITERAL(8, 101, 12), // "receiveRoute"
-QT_MOC_LITERAL(9, 114, 16), // "receiveCatReturn"
-QT_MOC_LITERAL(10, 131, 15), // "receiveLsReturn"
-QT_MOC_LITERAL(11, 147, 15), // "receiveLlReturn"
-QT_MOC_LITERAL(12, 163, 16), // "receivePwdReturn"
-QT_MOC_LITERAL(13, 180, 16) // "receiveVimAction"
+QT_MOC_LITERAL(5, 44, 17), // "sendRefreshAction"
+QT_MOC_LITERAL(6, 62, 11), // "receiveShow"
+QT_MOC_LITERAL(7, 74, 25), // "on_lineEdit_returnPressed"
+QT_MOC_LITERAL(8, 100, 18), // "receiveLoginStatus"
+QT_MOC_LITERAL(9, 119, 12), // "receiveRoute"
+QT_MOC_LITERAL(10, 132, 16), // "receiveCatReturn"
+QT_MOC_LITERAL(11, 149, 15), // "receiveLsReturn"
+QT_MOC_LITERAL(12, 165, 15), // "receiveLlReturn"
+QT_MOC_LITERAL(13, 181, 16), // "receivePwdReturn"
+QT_MOC_LITERAL(14, 198, 16) // "receiveVimAction"
 
     },
     "CLI\0sendLoginInfo\0\0sendOrder\0"
-    "sendVimContent\0receiveShow\0"
-    "on_lineEdit_returnPressed\0receiveLoginStatus\0"
-    "receiveRoute\0receiveCatReturn\0"
-    "receiveLsReturn\0receiveLlReturn\0"
-    "receivePwdReturn\0receiveVimAction"
+    "sendVimContent\0sendRefreshAction\0"
+    "receiveShow\0on_lineEdit_returnPressed\0"
+    "receiveLoginStatus\0receiveRoute\0"
+    "receiveCatReturn\0receiveLsReturn\0"
+    "receiveLlReturn\0receivePwdReturn\0"
+    "receiveVimAction"
 };
 #undef QT_MOC_LITERAL
 
@@ -60,33 +62,35 @@ static const uint qt_meta_data_CLI[] = {
        7,       // revision
        0,       // classname
        0,    0, // classinfo
-      12,   14, // methods
+      13,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
        0,       // flags
-       3,       // signalCount
+       4,       // signalCount
 
  // signals: name, argc, parameters, tag, flags
-       1,    2,   74,    2, 0x06 /* Public */,
-       3,    1,   79,    2, 0x06 /* Public */,
-       4,    2,   82,    2, 0x06 /* Public */,
+       1,    2,   79,    2, 0x06 /* Public */,
+       3,    1,   84,    2, 0x06 /* Public */,
+       4,    2,   87,    2, 0x06 /* Public */,
+       5,    0,   92,    2, 0x06 /* Public */,
 
  // slots: name, argc, parameters, tag, flags
-       5,    0,   87,    2, 0x08 /* Private */,
-       6,    0,   88,    2, 0x08 /* Private */,
-       7,    1,   89,    2, 0x08 /* Private */,
-       8,    1,   92,    2, 0x08 /* Private */,
-       9,    1,   95,    2, 0x08 /* Private */,
-      10,    1,   98,    2, 0x08 /* Private */,
-      11,    1,  101,    2, 0x08 /* Private */,
-      12,    1,  104,    2, 0x08 /* Private */,
-      13,    1,  107,    2, 0x08 /* Private */,
+       6,    0,   93,    2, 0x08 /* Private */,
+       7,    0,   94,    2, 0x08 /* Private */,
+       8,    1,   95,    2, 0x08 /* Private */,
+       9,    1,   98,    2, 0x08 /* Private */,
+      10,    1,  101,    2, 0x08 /* Private */,
+      11,    1,  104,    2, 0x08 /* Private */,
+      12,    1,  107,    2, 0x08 /* Private */,
+      13,    1,  110,    2, 0x08 /* Private */,
+      14,    1,  113,    2, 0x08 /* Private */,
 
  // signals: parameters
     QMetaType::Void, QMetaType::QString, QMetaType::QString,    2,    2,
     QMetaType::Void, QMetaType::QString,    2,
     QMetaType::Void, QMetaType::QString, QMetaType::QString,    2,    2,
+    QMetaType::Void,
 
  // slots: parameters
     QMetaType::Void,
@@ -111,15 +115,16 @@ void CLI::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **
         case 0: _t->sendLoginInfo((*reinterpret_cast< QString(*)>(_a[1])),(*reinterpret_cast< QString(*)>(_a[2]))); break;
         case 1: _t->sendOrder((*reinterpret_cast< QString(*)>(_a[1]))); break;
         case 2: _t->sendVimContent((*reinterpret_cast< QString(*)>(_a[1])),(*reinterpret_cast< QString(*)>(_a[2]))); break;
-        case 3: _t->receiveShow(); break;
-        case 4: _t->on_lineEdit_returnPressed(); break;
-        case 5: _t->receiveLoginStatus((*reinterpret_cast< bool(*)>(_a[1]))); break;
-        case 6: _t->receiveRoute((*reinterpret_cast< QString(*)>(_a[1]))); break;
-        case 7: _t->receiveCatReturn((*reinterpret_cast< QString(*)>(_a[1]))); break;
-        case 8: _t->receiveLsReturn((*reinterpret_cast< QString(*)>(_a[1]))); break;
-        case 9: _t->receiveLlReturn((*reinterpret_cast< QString(*)>(_a[1]))); break;
-        case 10: _t->receivePwdReturn((*reinterpret_cast< QString(*)>(_a[1]))); break;
-        case 11: _t->receiveVimAction((*reinterpret_cast< QString(*)>(_a[1]))); break;
+        case 3: _t->sendRefreshAction(); break;
+        case 4: _t->receiveShow(); break;
+        case 5: _t->on_lineEdit_returnPressed(); break;
+        case 6: _t->receiveLoginStatus((*reinterpret_cast< bool(*)>(_a[1]))); break;
+        case 7: _t->receiveRoute((*reinterpret_cast< QString(*)>(_a[1]))); break;
+        case 8: _t->receiveCatReturn((*reinterpret_cast< QString(*)>(_a[1]))); break;
+        case 9: _t->receiveLsReturn((*reinterpret_cast< QString(*)>(_a[1]))); break;
+        case 10: _t->receiveLlReturn((*reinterpret_cast< QString(*)>(_a[1]))); break;
+        case 11: _t->receivePwdReturn((*reinterpret_cast< QString(*)>(_a[1]))); break;
+        case 12: _t->receiveVimAction((*reinterpret_cast< QString(*)>(_a[1]))); break;
         default: ;
         }
     } else if (_c == QMetaObject::IndexOfMethod) {
@@ -143,6 +148,13 @@ void CLI::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **
             typedef void (CLI::*_t)(QString , QString );
             if (*reinterpret_cast<_t *>(func) == static_cast<_t>(&CLI::sendVimContent)) {
                 *result = 2;
+                return;
+            }
+        }
+        {
+            typedef void (CLI::*_t)();
+            if (*reinterpret_cast<_t *>(func) == static_cast<_t>(&CLI::sendRefreshAction)) {
+                *result = 3;
                 return;
             }
         }
@@ -174,13 +186,13 @@ int CLI::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 12)
+        if (_id < 13)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 12;
+        _id -= 13;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 12)
+        if (_id < 13)
             *reinterpret_cast<int*>(_a[0]) = -1;
-        _id -= 12;
+        _id -= 13;
     }
     return _id;
 }
@@ -204,5 +216,11 @@ void CLI::sendVimContent(QString _t1, QString _t2)
 {
     void *_a[] = { Q_NULLPTR, const_cast<void*>(reinterpret_cast<const void*>(&_t1)), const_cast<void*>(reinterpret_cast<const void*>(&_t2)) };
     QMetaObject::activate(this, &staticMetaObject, 2, _a);
+}
+
+// SIGNAL 3
+void CLI::sendRefreshAction()
+{
+    QMetaObject::activate(this, &staticMetaObject, 3, Q_NULLPTR);
 }
 QT_END_MOC_NAMESPACE

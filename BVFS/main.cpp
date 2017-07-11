@@ -15,11 +15,11 @@ int main(int argc, char *argv[])
     GUI g;
     CLI c;
     iNI i;
-    g.show();
+//    g.show();
     i.setWindowTitle("iNode Structure Table");
     i.show();
     c.setWindowTitle("Leeeeo@LeeeeoLius-MacBook-Pro:~/Code/BVFS");
-//    w.show();
+    w.show();
 //    c.show();
     QObject::connect(&w,SIGNAL(showGUI()),&g,SLOT(receiveShow()));
     QObject::connect(&w,SIGNAL(showCLI()),&c,SLOT(receiveShow()));
@@ -35,6 +35,8 @@ int main(int argc, char *argv[])
     QObject::connect(&w,SIGNAL(sendPwdReturn(QString)),&c,SLOT(receivePwdReturn(QString)));
     QObject::connect(&w,SIGNAL(sendVimAction(QString)),&c,SLOT(receiveVimAction(QString)));
     QObject::connect(&c,SIGNAL(sendVimContent(QString,QString)),&w,SLOT(receiveVimContent(QString,QString)));
+    QObject::connect(&w,SIGNAL(sendRefreshAction()),&i,SLOT(receiveRefreshAction()));
+    QObject::connect(&c,SIGNAL(sendRefreshAction()),&i,SLOT(receiveRefreshAction()));
 //    title();
 
 //    run();

@@ -22,6 +22,7 @@ public:
 private slots:
     void on_refresh_clicked();
     void receiveInodeData(INode*,MainFileDirectory,SymbolFileDirectory*);
+    void receiveRefreshAction();
 signals:
     void sendGetInodeDataInfo(bool);
 private:
