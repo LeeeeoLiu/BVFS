@@ -30,28 +30,19 @@ void MainWindow::on_pushButton_2_clicked()
     {
         this->hide();
         emit showGUI();
-//        emit sendLoginStatus(true);
-//        string order;
-//        string pwd_tmp = "/root/";
-//        cout<<loginUser.username<<"@";
         string pwd="";
         vector<string>::iterator it;
         for(it = PWD.begin();it!=PWD.end();it++) {
             pwd+="/";
             pwd+=*it;
-//            cout<<"/"<<*it;
         }
         emit sendGuiRoute(QString::fromStdString(pwd));
         emit sendGuiFileName(QString::fromStdString(ls()));
-//        cout<<pwd<<endl;
-        //cout<<"$ ";
     }else{
         QMessageBox::information(this, QString::fromLocal8Bit("警告"),QString::fromLocal8Bit("用户名密码错误"));
         ui->lineEdit_2->clear();
         ui->lineEdit->clear();
     }
-//    QMessageBox::information(this, QString::fromLocal8Bit("警告"),psw);
-
 }
 
 void MainWindow::on_commandLinkButton_clicked()
@@ -78,16 +69,11 @@ void MainWindow::receiveLoginInfo(QString name, QString psw)
         for(it = PWD.begin();it!=PWD.end();it++) {
             pwd+="/";
             pwd+=*it;
-//            cout<<"/"<<*it;
         }
         emit sendRoute(QString::fromStdString(pwd));
-//        cout<<pwd<<endl;
-        //cout<<"$ ";
     }else{
         emit sendLoginStatus(false);
     }
-//    QMessageBox::information(this, QString::fromLocal8Bit("警告"),psw);
-
 }
 void MainWindow::receiveSetInodeInfo(bool flag)
 {
@@ -140,7 +126,6 @@ void MainWindow::receiveSetInodeInfo(bool flag)
 
        emit sendInodeToIni(inodePoint,mfdPoint,sfdPoint);
     }
-//    emit sendRefreshAction();
 }
 void MainWindow::receiveOrder(QString o)
 {
@@ -186,24 +171,19 @@ void MainWindow::receiveOrder(QString o)
     }else if(order == "format"){
         sudoFormat();
     } else if(order == "help"){
-//        help();
         emit sendHelpReturn(QString::fromStdString(help()));
     } else if(order == "ll") {
         emit sendLsReturn(QString::fromStdString(ll()));
-//        ll();
     } else if(order == "login") {
         if(loginUser.username != "/") {
             cout<<"error: you has logined!"<<endl;
         } else {
-//                login();
         }
     } else if(order == "logout") {
         strcpy(loginUser.username,"/");
-//        run();
         loginS=false;
         emit sendLogoutAction();
     } else if(order == "ls") {
-//        ls();
         emit sendLsReturn(QString::fromStdString(ls()));
     } else if(order.find("mkdir") == 0) {
         string dir = "";
@@ -225,7 +205,6 @@ void MainWindow::receiveOrder(QString o)
         emit sendPwdReturn(QString::fromStdString(pwd()));
     } else if(order == "useradd") {
         emit sendUserAddAction();
-//        userRegister();
     } else if(order.find("renamef") == 0) {
         string dir1 = "";
         string dir2 = "";
@@ -326,7 +305,6 @@ void MainWindow::receiveOrder(QString o)
             }
             if(file.size() > 0) {
                 emit sendVimAction(QString::fromStdString(file));
-//                vim(file);
             }
         }
     }
@@ -338,9 +316,7 @@ void MainWindow::receiveOrder(QString o)
     for(it = PWD.begin();it!=PWD.end();it++) {
         pwd+="/";
         pwd+=*it;
-//        cout<<"/"<<*it;
     }
-//    cout<<"$ ";
     if(loginS==true)
     {
         emit sendRoute(QString::fromStdString(pwd));
@@ -361,15 +337,6 @@ void MainWindow::receiveUserAddContent(QString n, QString p)
 {
     bool status=userRegister(n.toStdString(), p.toStdString());
     emit sendUserAddStatus(status);
-//    if (addUser(n.toStdString(), p.toStdString()) != -1) {
-//        cout << "Register Successfully!" << endl;
-//        emit sendUserAddStatus(true);
-//    }
-//    else {
-//        cout << "error: " << endl;
-//        emit sendUserAddStatus(false);
-//    }
-
 }
 
 void MainWindow::receiveGuiEnterFileName(QString n)
@@ -380,7 +347,6 @@ void MainWindow::receiveGuiEnterFileName(QString n)
     for(it = PWD.begin();it!=PWD.end();it++) {
         pwd+="/";
         pwd+=*it;
-//            cout<<"/"<<*it;
     }
     emit sendGuiRoute(QString::fromStdString(pwd));
     emit sendGuiFileName(QString::fromStdString(ls()));
@@ -396,7 +362,6 @@ void MainWindow::receiveGuiReturnAction()
     for(it = PWD.begin();it!=PWD.end();it++) {
         pwd+="/";
         pwd+=*it;
-//            cout<<"/"<<*it;
     }
 
 
@@ -414,7 +379,6 @@ void MainWindow::receiveGuiEditContent(QString file, QString content)
     for(it = PWD.begin();it!=PWD.end();it++) {
         pwd+="/";
         pwd+=*it;
-//            cout<<"/"<<*it;
     }
     emit sendGuiRoute(QString::fromStdString(pwd));
     emit sendGuiFileName(QString::fromStdString(ls()));
@@ -432,7 +396,6 @@ void MainWindow::receiveGuiShowDirectories()
     for(it = PWD.begin();it!=PWD.end();it++) {
         pwd+="/";
         pwd+=*it;
-//            cout<<"/"<<*it;
     }
     emit sendGuiRoute(QString::fromStdString(pwd));
     emit sendGuiFileName(QString::fromStdString(ls()));
@@ -446,7 +409,6 @@ void MainWindow::receiveGuiNewDirectory(QString r)
     for(it = PWD.begin();it!=PWD.end();it++) {
         pwd+="/";
         pwd+=*it;
-//            cout<<"/"<<*it;
     }
     emit sendGuiRoute(QString::fromStdString(pwd));
     emit sendGuiFileName(QString::fromStdString(ls()));
@@ -460,7 +422,6 @@ void MainWindow::receiveGuiNewFile(QString r)
     for(it = PWD.begin();it!=PWD.end();it++) {
         pwd+="/";
         pwd+=*it;
-//            cout<<"/"<<*it;
     }
     emit sendGuiRoute(QString::fromStdString(pwd));
     emit sendGuiFileName(QString::fromStdString(ls()));
@@ -474,7 +435,6 @@ void MainWindow::receiveGuiRenameAction(QString bn, QString an)
     for(it = PWD.begin();it!=PWD.end();it++) {
         pwd+="/";
         pwd+=*it;
-//            cout<<"/"<<*it;
     }
     emit sendGuiRoute(QString::fromStdString(pwd));
     emit sendGuiFileName(QString::fromStdString(ls()));
@@ -488,7 +448,21 @@ void MainWindow::receiveGuiDeleteAction(QString r)
     for(it = PWD.begin();it!=PWD.end();it++) {
         pwd+="/";
         pwd+=*it;
-//            cout<<"/"<<*it;
+    }
+    emit sendGuiRoute(QString::fromStdString(pwd));
+    emit sendGuiFileName(QString::fromStdString(ls()));
+}
+
+void MainWindow::receiveGuiHomeAction()
+{
+    while(PWD.size()>1) {
+        PWD.pop_back();
+    }
+    string pwd="";
+    vector<string>::iterator it;
+    for(it = PWD.begin();it!=PWD.end();it++) {
+        pwd+="/";
+        pwd+=*it;
     }
     emit sendGuiRoute(QString::fromStdString(pwd));
     emit sendGuiFileName(QString::fromStdString(ls()));

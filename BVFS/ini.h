@@ -1,8 +1,6 @@
 #ifndef INI_H
 #define INI_H
 
-
-
 #include <QMainWindow>
 #include "mainwindow.h"
 

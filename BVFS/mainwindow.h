@@ -76,14 +76,9 @@ public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
 
-
-
-
 private slots:
     void on_pushButton_2_clicked();
-
     void on_commandLinkButton_clicked();
-
     void on_pushButton_clicked();
     void receiveLoginInfo(QString,QString);
     void receiveSetInodeInfo(bool);
@@ -99,6 +94,7 @@ private slots:
     void receiveGuiNewFile(QString);
     void receiveGuiRenameAction(QString,QString);
     void receiveGuiDeleteAction(QString);
+    void receiveGuiHomeAction();
 
 signals:
     void showGUI();

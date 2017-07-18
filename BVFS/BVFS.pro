@@ -45,7 +45,6 @@ HEADERS  += mainwindow.h \
     gui.h \
     cli.h \
     ini.h \
-    main.h \
     editor.h \
     myhighlighter.h \
     codeeditor.h \

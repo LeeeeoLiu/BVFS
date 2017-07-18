@@ -234,7 +234,6 @@ DIST          = ../../Qt/5.7/clang_64/mkspecs/features/spec_pre.prf \
 		../BVFS/gui.h \
 		../BVFS/cli.h \
 		../BVFS/ini.h \
-		../BVFS/main.h \
 		../BVFS/editor.h \
 		../BVFS/myhighlighter.h \
 		../BVFS/codeeditor.h \
@@ -581,7 +580,7 @@ distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
 	$(COPY_FILE) --parents ../BVFS/picture.qrc $(DISTDIR)/
-	$(COPY_FILE) --parents ../BVFS/mainwindow.h ../BVFS/directory.h ../BVFS/file.h ../BVFS/filesystem.h ../BVFS/format.h ../BVFS/freeblocklink.h ../BVFS/help.h ../BVFS/login.h ../BVFS/register.h ../BVFS/run.h ../BVFS/stacki.h ../BVFS/gui.h ../BVFS/cli.h ../BVFS/ini.h ../BVFS/main.h ../BVFS/editor.h ../BVFS/myhighlighter.h ../BVFS/codeeditor.h ../BVFS/typedef.h $(DISTDIR)/
+	$(COPY_FILE) --parents ../BVFS/mainwindow.h ../BVFS/directory.h ../BVFS/file.h ../BVFS/filesystem.h ../BVFS/format.h ../BVFS/freeblocklink.h ../BVFS/help.h ../BVFS/login.h ../BVFS/register.h ../BVFS/run.h ../BVFS/stacki.h ../BVFS/gui.h ../BVFS/cli.h ../BVFS/ini.h ../BVFS/editor.h ../BVFS/myhighlighter.h ../BVFS/codeeditor.h ../BVFS/typedef.h $(DISTDIR)/
 	$(COPY_FILE) --parents ../BVFS/main.cpp ../BVFS/mainwindow.cpp ../BVFS/gui.cpp ../BVFS/cli.cpp ../BVFS/ini.cpp ../BVFS/editor.cpp ../BVFS/myhighlighter.cpp ../BVFS/codeeditor.cpp $(DISTDIR)/
 	$(COPY_FILE) --parents ../BVFS/mainwindow.ui ../BVFS/gui.ui ../BVFS/cli.ui ../BVFS/ini.ui ../BVFS/editor.ui $(DISTDIR)/
 
@@ -873,7 +872,9 @@ cli.o: ../BVFS/cli.cpp ../BVFS/cli.h \
 		../../Qt/5.7/clang_64/lib/QtGui.framework/Headers/QKeyEvent \
 		../BVFS/main.h \
 		../../Qt/5.7/clang_64/lib/QtCore.framework/Headers/QTime \
-		../../Qt/5.7/clang_64/lib/QtCore.framework/Headers/qdatetime.h
+		../../Qt/5.7/clang_64/lib/QtCore.framework/Headers/qdatetime.h \
+		../../Qt/5.7/clang_64/lib/QtCore.framework/Headers/QDebug \
+		../../Qt/5.7/clang_64/lib/QtCore.framework/Headers/qdebug.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o cli.o ../BVFS/cli.cpp
 
 ini.o: ../BVFS/ini.cpp ../BVFS/ini.h \

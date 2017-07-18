@@ -15,8 +15,8 @@ GUI::GUI(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::GUI)
 {
-    ui->setupUi(this);
-    //button的三态
+    ui->setupUi(this);  //初始化gui的控件
+    //设置各个按钮的三态，即悬浮，点击，默认
     ui->back->setStyleSheet("QPushButton{border-image: url(:/new/prefix1/back.png);}"
                                       "QPushButton:hover{border-image: url(:/new/prefix1/back1.png);}"
                                       "QPushButton:pressed{border-image: url(:/new/prefix1/back2.png);}");
@@ -38,21 +38,14 @@ GUI::GUI(QWidget *parent) :
     ui->delete_2->setStyleSheet("QPushButton{border-image: url(:/new/prefix1/delete.png);}"
                                       "QPushButton:hover{border-image: url(:/new/prefix1/delete1.png);}"
                                       "QPushButton:pressed{border-image: url(:/new/prefix1/delete2.png);}");
-//    ui->file1->setStyleSheet("QPushButton{border-image: url(:/new/prefix1/file1.png);}"
-//                                      "QPushButton:hover{border-image: url(:/new/prefix1/file11.png);}"
-//                                      "QPushButton:pressed{border-image: url(:/new/prefix1/file12.png);}");
-//    ui->file2->setStyleSheet("QPushButton{border-image: url(:/new/prefix1/file2.png);}"
-//                                      "QPushButton:hover{border-image: url(:/new/prefix1/file21.png);}"
-//                                      "QPushButton:pressed{border-image: url(:/new/prefix1/file22.png);}");
     ui->home->setStyleSheet("QPushButton{border-image: url(:/new/prefix1/home.png);}"
                                       "QPushButton:hover{border-image: url(:/new/prefix1/home1.png);}"
                                       "QPushButton:pressed{border-image: url(:/new/prefix1/home2.png);}");
 
     NewDirectory = new QAction(tr("新建文件夹"), this);
     NewFile = new QAction(tr("新建文件"), this);
-    connect(NewDirectory, SIGNAL(triggered()), this, SLOT(newDirectory()));
+    connect(NewDirectory, SIGNAL(triggered()), this, SLOT(newDirectory())); //连接鼠标右键新建文件夹与newDirectory函数
     connect(NewFile, SIGNAL(triggered()), this, SLOT(newFile()));
-
 }
 
 GUI::~GUI()
@@ -62,22 +55,19 @@ GUI::~GUI()
 
 void GUI::receiveShow()
 {
-    this->show();
+    this->show();   //显示gui窗口
 }
 
 //点击事件
 void GUI::on_back_clicked()
 {
-    emit sendReturnAction();
-//    this->hide();
+    emit sendReturnAction();    //发送后退信号
 }
 
 void GUI::contextMenuEvent(QContextMenuEvent *) //右键菜单项编辑
 {
     QCursor cur=this->cursor();
     QMenu *menu=new QMenu(this);
-//    menu->addAction(Act_Maxsize); //添加菜单项1
-//    menu->addAction(Act_Normal); //添加菜单项2
     menu->addAction(NewDirectory);
     menu->addAction(NewFile);
     menu->exec(cur.pos()); //关联到光标
@@ -85,7 +75,7 @@ void GUI::contextMenuEvent(QContextMenuEvent *) //右键菜单项编辑
 
 void GUI::receiveRoute(QString r)
 {
-    ui->lineEdit->setText(r);
+    ui->lineEdit->setText(r);   //设置lineEdit控件的内容为r
 }
 
 
@@ -104,13 +94,12 @@ void GUI::on_file2_clicked()
 
 void GUI::receiveFileName(QString r)
 {
-//    QMessageBox::information(this, QString::fromLocal8Bit("警告"),r);
     for(int i=0;i<10;i++){
         fileName[i].clear();
     }
     QStringList list2 = r.split(" ", QString::SkipEmptyParts);
     QLayoutItem *item;
-    while((item = ui->horizontalLayout_3->takeAt(0)) != 0){
+    while((item = ui->horizontalLayout_3->takeAt(0)) != 0){     //删除layout中的子元素
         //删除widget
         if(item->widget()){
             delete item->widget();
@@ -118,12 +107,6 @@ void GUI::receiveFileName(QString r)
         }
         delete item;
     }
-    // list2: [ "a", "b", "c" ]
-//    ui->file2->setText(list2[0]);
-//    for(int i=0;i<list2.count();i++)
-//    {
-//        QMessageBox::information(this, QString::fromLocal8Bit("警告"),list2[i]);
-//    }
     if(list2.count()>1)
     {
         QSignalMapper *signalMapper = new QSignalMapper(this);
@@ -131,7 +114,7 @@ void GUI::receiveFileName(QString r)
         for(int i=0;i<list2.count();i++)
         {
             fileName[i]=list2[i];
-            QPushButton *pb2=new QPushButton(list2[i]);
+            QPushButton *pb2=new QPushButton(list2[i]);     //创建一个文件夹／文件按钮
             pb2->setMinimumHeight(51);
             pb2->setMinimumWidth(71);
             pb2->setMaximumHeight(51);
@@ -147,10 +130,7 @@ void GUI::receiveFileName(QString r)
                                                   "QPushButton:hover{border-image: url(:/new/prefix1/file21.png);}"
                                                   "QPushButton:pressed{border-image: url(:/new/prefix1/file22.png);}");
             }
-
-//            connect()
             signalMapper->setMapping(pb2, i);
-//            connect(pb2,SIGNAL(clicked()),this,SLOT(receiveEnterFile()));
             connect(pb2, SIGNAL(clicked()), signalMapper, SLOT(map()));
             ui->horizontalLayout_3->addWidget(pb2);
         }
@@ -160,13 +140,11 @@ void GUI::receiveFileName(QString r)
 
 void GUI::receiveEnterFile(int i)
 {
-//    QMessageBox::information(this, QString::fromLocal8Bit("警告"),fileName[i]);
     QLayoutItem *item;
     while((item = ui->horizontalLayout_3->takeAt(0)) != 0){
         //删除widget
         if(item->widget()){
             delete item->widget();
-            //item->widget()->deleteLater();
         }
         delete item;
     }
@@ -181,11 +159,6 @@ void GUI::receiveEnterFile(int i)
 bool GUI::eventFilter(QObject *target, QEvent *e)
 {
     QMessageBox::information(this, QString::fromLocal8Bit("警告"),target->objectName());
-//    if(target->objectName())
-//    {
-//        if(e->type() == QEvent::MouseButtonDblClick) //双击消息
-//            QMessageBox::about(this,"x","x");
-//    }
     return QMainWindow::eventFilter(target, e);
 }
 
@@ -193,12 +166,10 @@ void GUI::receiveFrontName(QString r)
 {
     frontName.clear();
     frontName=r;
-
 }
 
 void GUI::on_forward_clicked()
 {
-//    QMessageBox::information(this, QString::fromLocal8Bit("警告"),frontName);
     emit sendEnterFileName(frontName);
 
 }
@@ -206,36 +177,16 @@ void GUI::on_forward_clicked()
 void GUI::newDirectory()
 {
     qDebug()<<"new directory.";
-//    QPushButton *pb2=new QPushButton();
     bool isOK;
     QString text = QInputDialog::getText(NULL, "新建文件夹", "请输入新建文件夹名",QLineEdit::Normal,"",&isOK);
     if(isOK) {
-//           QMessageBox::information(NULL, "Information",
-//                                               "Your comment is: <b>" + text + "</b>",
-//                                               QMessageBox::Yes | QMessageBox::No,
-//                                               QMessageBox::Yes);
-//        qDebug()<<text;
-
-//        pb2->setMinimumHeight(51);
-//        pb2->setMinimumWidth(71);
-//        pb2->setMaximumHeight(51);
-//        pb2->setMaximumWidth(71);
-//        pb2->setStyleSheet("QPushButton{border-image: url(:/new/prefix1/file2.png);}"
-//                                          "QPushButton:hover{border-image: url(:/new/prefix1/file21.png);}"
-//                                          "QPushButton:pressed{border-image: url(:/new/prefix1/file22.png);}");
-//        pb2->setText(text);
-//        ui->horizontalLayout_3->addWidget(pb2);
         emit sendNewDirectoryAction(text);
     }
-
-//    pb2->setText();
-
 }
 
 void GUI::newFile()
 {
     qDebug()<<"new file.";
-//    QPushButton *pb2=new QPushButton();
     bool isOK;
     QString text = QInputDialog::getText(NULL, "新建文件", "请输入新建文件名",QLineEdit::Normal,"",&isOK);
     if(isOK) {
@@ -274,7 +225,6 @@ void GUI::on_edit_clicked()
     if(isOK) {
         qDebug()<<text;
         qDebug()<<"--------";
-//        emit sendNewFileAction(text);
         int i;
         for(i=0;i<fileCount;i++)
         {
@@ -305,7 +255,6 @@ void GUI::on_delete_2_clicked()
     if(isOK) {
         qDebug()<<text;
         qDebug()<<"--------";
-//        emit sendNewFileAction(text);
         int i;
         for(i=0;i<fileCount;i++)
         {
@@ -319,7 +268,6 @@ void GUI::on_delete_2_clicked()
         if(i!=fileCount)
         {
             QMessageBox::StandardButton rb=QMessageBox::question(NULL, "删除文件警告","确认要删除<b>" + text + "</b>么？",QMessageBox::Yes | QMessageBox::No,QMessageBox::Yes);
-//            QString text2 = QMessageBox::information(NULL, "删除文件／文件夹", "确认要删除么？","","",&isOK);
             if(rb == QMessageBox::Yes)
             {
                     qDebug()<<"确认删除";
@@ -330,4 +278,9 @@ void GUI::on_delete_2_clicked()
             QMessageBox::information(this, QString::fromLocal8Bit("警告"),text+"该文件／文件夹在当前目录不存在！");
         }
     }
+}
+
+void GUI::on_home_clicked()
+{
+    emit sendHomeAction();  //发送返回主页信号
 }

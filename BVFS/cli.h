@@ -2,7 +2,6 @@
 #define CLI_H
 
 #include <QMainWindow>
-//#include "login.h"
 #include "codeeditor.h"      //
 #include "myhighlighter.h"   //
 #include "typedef.h"         //

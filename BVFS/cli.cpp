@@ -6,7 +6,6 @@
 #include <QTime>
 #include <QDebug>
 using namespace std;
-//QString cliHistory;
 int tabCount=1;
 QString userCurrent=NULL;
 QString pswCurrent=NULL;
@@ -27,25 +26,16 @@ CLI::CLI(QWidget *parent) :
 {
 
     configEditor = new CodeEditor();
-      //新加
-           configEditor->setMode(EDIT);
-       MyHighLighter *highlighter = new MyHighLighter(configEditor->document
-   ());
+    configEditor->setMode(EDIT);
+    MyHighLighter *highlighter = new MyHighLighter(configEditor->document());
     QPalette palette(this->palette());
     palette.setColor(QPalette::Background, Qt::lightGray);
     this->setPalette(palette);
-//    cliHistory="# Leeeeo @ LeeeeoLius-MacBook-Pro in ~/Code/BVFS on git:master x [14:30:01]\n$";
     ui->setupUi(this);
-//    ui->textEdit->append(cliHistory);
-//    ui->plainTextEdit->appendHtml(cliHistory+"");
     configEditor->moveCursor(QTextCursor::End);
-//    ui->textEdit->append("Welcome to BVFS comand line interface!\n(C) Copyrights by BV533 2017.\nlogin:");
     emit sendRefreshAction();
-
-
-       configEditor->appendPlainText("Welcome to BVFS comand line interface!\n(C) Copyrights by BV533 2017.\nlogin:");
-       configEditor->moveCursor(QTextCursor::End);
-
+    configEditor->appendPlainText("Welcome to BVFS comand line interface!\n(C) Copyrights by BV533 2017.\nlogin:");
+    configEditor->moveCursor(QTextCursor::End);
     ui->gridLayout->addWidget(configEditor);
 }
 
@@ -64,7 +54,7 @@ void CLI::on_lineEdit_returnPressed()
 {
     if(ui->lineEdit->text()=="exit")
     {
-            exit(0);
+        exit(0);
     }else if(registMark)
     {
         if(userRegist.count()==0)
@@ -76,7 +66,6 @@ void CLI::on_lineEdit_returnPressed()
             MyHighLighter *highlighter = new MyHighLighter(configEditor->document());
             configEditor->appendPlainText(userRegist+"'s password:");
             cmdTime=QTime::currentTime().toString("hh:mm:ss");
-    //        ui->textEdit->append(ui->lineEdit->text());
             this->setWindowTitle(userCurrent+"@LeeeeoLius-MacBook-Pro:"+route);
             front="# "+userCurrent+"@ LeeeeoLius-MacBook-Pro in "+route+"["+cmdTime+"]$";
             ui->lineEdit->setText(front);
@@ -85,9 +74,7 @@ void CLI::on_lineEdit_returnPressed()
             QString order=ui->lineEdit->text();
             order=order.section('$',1,1);
             pswRegist=order;
-//            ui->textEdit->append(userRegist+"'s password:");
             cmdTime=QTime::currentTime().toString("hh:mm:ss");
-    //        ui->textEdit->append(ui->lineEdit->text());
             this->setWindowTitle(userCurrent+"@LeeeeoLius-MacBook-Pro:"+route);
             front="# "+userCurrent+"@ LeeeeoLius-MacBook-Pro in "+route+"["+cmdTime+"]$";
             ui->lineEdit->setText(front);
@@ -109,38 +96,26 @@ void CLI::on_lineEdit_returnPressed()
     {
         pswCurrent=ui->lineEdit->text();
         emit sendLoginInfo(userCurrent,pswCurrent);
-//        send(userCurrent.toStdString(),pswCurrent.toStdString());
-//        cmdTime=QTime::currentTime().toString("hh:mm:ss");
-//        this->setWindowTitle(userCurrent+"@LeeeeoLius-MacBook-Pro:"+route);
-//        front="# "+userCurrent+"@ LeeeeoLius-MacBook-Pro in "+route+"["+cmdTime+"]$";
-//        ui->lineEdit->setText(front);
     }else if(ui->lineEdit->text()==":wq")
     {
-
-
-            configEditor->setMode(EDIT);
-             MyHighLighter *highlighter = new MyHighLighter(configEditor->document());
+        configEditor->setMode(EDIT);
+        MyHighLighter *highlighter = new MyHighLighter(configEditor->document());
         emit sendVimContent(file,configEditor->toPlainText());
-             configEditor->clear();
-             configEditor->appendPlainText(his);
+        configEditor->clear();
+        configEditor->appendPlainText(his);
         cmdTime=QTime::currentTime().toString("hh:mm:ss");
-//        ui->textEdit->append(ui->lineEdit->text());
         this->setWindowTitle(userCurrent+"@LeeeeoLius-MacBook-Pro:"+route);
         front="# "+userCurrent+"@ LeeeeoLius-MacBook-Pro in "+route+"["+cmdTime+"]$";
         ui->lineEdit->setText(front);
     }else if(userStatus){
-
-
-               configEditor->setMode(EDIT);
-           MyHighLighter *highlighter = new MyHighLighter(configEditor->document());
+        configEditor->setMode(EDIT);
+        MyHighLighter *highlighter = new MyHighLighter(configEditor->document());
         QString order=ui->lineEdit->text();
         order=order.section('$',1,1);
         configEditor->appendPlainText(ui->lineEdit->text());
         qDebug()<<order;
         emit sendOrder(order);
-
         cmdTime=QTime::currentTime().toString("hh:mm:ss");
-//        ui->textEdit->append(ui->lineEdit->text());
         this->setWindowTitle(userCurrent+"@LeeeeoLius-MacBook-Pro:"+route);
         front="# "+userCurrent+"@ LeeeeoLius-MacBook-Pro in "+route+"["+cmdTime+"]$";
         ui->lineEdit->setText(front);
@@ -155,15 +130,11 @@ void CLI::keyPressEvent(QKeyEvent  *event)
 {
      if(event->key()==Qt::Key_T)
     {
-         cout<<"sdafasdfasfd"<<endl;
          tabCount++;
          QTextEdit *edit=new QTextEdit();
-//         QString tabname="Tab"+tabCount;
          ui->tabWidget->addTab(edit,"Tab"+QString::number(tabCount, 10));
          ui->tabWidget->setCurrentIndex(tabCount-1);
          tabIndex=tabCount-1;
-         //CLI temp;
-         //temp.show();
     }else if(event->key()==Qt::Key_W){
          if(tabIndex==0)
          {
@@ -177,8 +148,6 @@ void CLI::keyPressEvent(QKeyEvent  *event)
              }
              tabIndex--;
              tabCount--;
-            // ui->tabWidget->setTabText();
-             //ui->(Tab+"2")->setObjectName("djfkj");
              ui->tabWidget->setCurrentIndex(tabIndex);
          }
      }else if(event->key()==Qt::Key_1)
@@ -208,35 +177,25 @@ void CLI::receiveLoginStatus(bool status)
     userStatus=status;
     if(status)
     {
-
-               configEditor->setMode(EDIT);
-           MyHighLighter *highlighter = new MyHighLighter(configEditor->document());
+        configEditor->setMode(EDIT);
+        MyHighLighter *highlighter = new MyHighLighter(configEditor->document());
         configEditor->appendPlainText(userCurrent+" login sucessfully!");
-//        ui->textEdit->append("\n");
-//        cmdTime=QTime::currentTime().toString("hh:mm:ss");
-//        ui->textEdit->append(ui->lineEdit->text());
-//        this->setWindowTitle(userCurrent+"@LeeeeoLius-MacBook-Pro:"+route);
-//        front="# "+userCurrent+"@ LeeeeoLius-MacBook-Pro in "+route+"["+cmdTime+"]$";
-//        ui->lineEdit->setText(front);
     }else
     {
-
-               configEditor->setMode(EDIT);
-           MyHighLighter *highlighter = new MyHighLighter(configEditor->document());
+        configEditor->setMode(EDIT);
+        MyHighLighter *highlighter = new MyHighLighter(configEditor->document());
         configEditor->appendPlainText("\nWrong Password!Please try again!\n");
         userCurrent.clear();
         pswCurrent.clear();
         configEditor->appendPlainText("login:");
         ui->lineEdit->clear();
     }
-//    emit sendRefreshAction();
 }
 
 void CLI::receiveRoute(QString r)
 {
     route=r;
     cmdTime=QTime::currentTime().toString("hh:mm:ss");
-//        ui->textEdit->append(ui->lineEdit->text());
     this->setWindowTitle(userCurrent+"@LeeeeoLius-MacBook-Pro:"+route);
     front="# "+userCurrent+"@ LeeeeoLius-MacBook-Pro in "+route+" ["+cmdTime+"]$";
     ui->lineEdit->setText(front);
@@ -245,35 +204,30 @@ void CLI::receiveRoute(QString r)
 
 void CLI::receiveCatReturn(QString r)
 {
-
-           configEditor->setMode(EDIT);
-       MyHighLighter *highlighter = new MyHighLighter(configEditor->document());
-
+    configEditor->setMode(EDIT);
+    MyHighLighter *highlighter = new MyHighLighter(configEditor->document());
     configEditor->appendPlainText(r);
     emit sendRefreshAction();
 }
 
 void CLI::receiveLsReturn(QString r)
 {
-
-           configEditor->setMode(EDIT);
-       MyHighLighter *highlighter = new MyHighLighter(configEditor->document());
-     configEditor->appendPlainText(r);
+    configEditor->setMode(EDIT);
+    MyHighLighter *highlighter = new MyHighLighter(configEditor->document());
+    configEditor->appendPlainText(r);
     emit sendRefreshAction();
 }
 
 void CLI::receiveLlReturn(QString r)
 {
-
-           configEditor->setMode(EDIT);
-       MyHighLighter *highlighter = new MyHighLighter(configEditor->document());
-     configEditor->appendPlainText(r);
+    configEditor->setMode(EDIT);
+    MyHighLighter *highlighter = new MyHighLighter(configEditor->document());
+    configEditor->appendPlainText(r);
     emit sendRefreshAction();
 }
 
 void CLI::receivePwdReturn(QString r)
 {
-
     configEditor->setMode(EDIT);
     MyHighLighter *highlighter = new MyHighLighter(configEditor->document());
     configEditor->appendPlainText(r);
@@ -282,16 +236,13 @@ void CLI::receivePwdReturn(QString r)
 
 void CLI::receiveVimAction(QString f)
 {
-
-           configEditor->setMode(EDIT);
-       MyHighLighter *highlighter = new MyHighLighter(configEditor->document());
+    configEditor->setMode(EDIT);
+    MyHighLighter *highlighter = new MyHighLighter(configEditor->document());
     file=f;
     his=configEditor->toPlainText();
     configEditor->clear();
-//    ui->lineEdit->clear();
-   configEditor->setReadOnly(false);
+    configEditor->setReadOnly(false);
     emit sendRefreshAction();
-//    ui->lineEdit->clear();
 }
 
 void CLI::receiveHelpReturn(QString r)
@@ -305,16 +256,13 @@ void CLI::receiveClsAction()
 {
     configEditor->setMode(EDIT);
     MyHighLighter *highlighter = new MyHighLighter(configEditor->document());
-//    configEditor->appendPlainText(r);
     configEditor->clear();
-//    ui->textEdit->clear();
 }
 
 void CLI::receiveLogoutAction()
 {
     configEditor->setMode(EDIT);
     MyHighLighter *highlighter = new MyHighLighter(configEditor->document());
-//    configEditor->appendPlainText(r);
     configEditor->clear();
     configEditor->moveCursor(QTextCursor::End);
     configEditor->appendPlainText("Welcome to BVFS comand line interface!\n(C) Copyrights by BV533 2017.\nlogin:");

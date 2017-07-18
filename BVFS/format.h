@@ -26,7 +26,7 @@ void format() {
 	printf("WARNING:ALL DATA ON THIS FILESYSTEM WILL BE LOST!\n");
 	printf("Proceed with Format(Y/N)?");
 //	cin >> choice;
-    choice=='y';
+    choice='y';
 	//(2) init super_block
 	if ((choice == 'y') || (choice == 'Y')) {
 		if ((fp=fopen(SYSTEM, "wb+")) == NULL)
